@@ -1,0 +1,202 @@
+<odoo>
+
+<!-- add parent base prueba -->
+<record id="view_prueba_base_form" model="ir.ui.view">
+    <field name="name">prueba.base.form</field>
+    <field name="model">prueba.base</field>
+    <field name="arch" type="xml">
+        <form string="Prueba Base">
+            <sheet>
+                <group>
+                    <field name="name"/>
+                    <field name="description"/>
+                </group>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+
+<!-- add studens action -->
+<record id="students_action" model="ir.actions.act_window">
+    <field name="name">Students</field>
+    <field name="res_model">prueba.student</field>
+    <field name="view_mode">tree,form</field>
+</record>
+
+<!-- add teacher action -->
+<record id="teachers_action" model="ir.actions.act_window">
+    <field name="name">Teachers</field>
+    <field name="res_model">prueba.teacher</field>
+    <field name="view_mode">tree,form</field>
+</record>
+
+<!-- add course action -->
+<record id="courses_action" model="ir.actions.act_window">
+    <field name="name">Courses</field>
+    <field name="res_model">prueba.course</field>
+    <field name="view_mode">tree,form</field>
+</record>
+
+<!-- add asignature action -->
+<record id="asignatures_action" model="ir.actions.act_window">
+    <field name="name">Asignatures</field>
+    <field name="res_model">prueba.asignature</field>
+    <field name="view_mode">tree,form</field>
+</record>
+
+<!-- add studens form view -->
+<record id="students_form" model="ir.ui.view">
+    <field name="name">Students.form</field>
+    <field name="model">prueba.student</field>
+    <field name="arch" type="xml">
+        <form string="Students">
+            <group>
+                <field name="name"/>
+                <field name="age"/>
+            </group>
+        </form>
+    </field>
+</record>
+
+<!-- add teacher form view -->
+<record id="teachers_form" model="ir.ui.view">
+    <field name="name">Teachers.form</field>
+    <field name="model">prueba.teacher</field>
+    <field name="arch" type="xml">
+        <form string="Teachers">
+            <group>
+                <field name="name"/>
+                <field name="age"/>
+            </group>
+        </form>
+    </field>
+</record>
+
+<!-- add course form view -->
+<record id="courses_form" model="ir.ui.view">
+    <field name="name">Courses.form</field>
+    <field name="model">prueba.course</field>
+    <field name="arch" type="xml">
+        <form string="Courses">
+            <group>
+                <field name="name"/>
+                <field name="teacher_id"/>
+                <field name="student_id" widget="many2many_tags"/>
+            </group>
+        </form>
+    </field>
+</record>
+
+<!-- add asignature form view -->
+<record id="asignatures_form" model="ir.ui.view">
+    <field name="name">Asignatures.form</field>
+    <field name="model">prueba.asignature</field>
+    <field name="arch" type="xml">
+        <form string="Asignatures">
+            <group>
+                <field name="name"/>
+                <field name="exam"/>
+                <field name="course_id"/>
+                <field name="teacher_id"/>
+                <field name="student_id" widget="many2many_tags"/>
+            </group>
+        </form>
+    </field>
+</record>
+
+<!-- add studens tree view -->
+<record id="students_tree" model="ir.ui.view">
+    <field name="name">Students.tree</field>
+    <field name="model">prueba.student</field>
+    <field name="arch" type="xml">
+        <tree string="Students">
+            <field name="name"/>
+            <field name="age"/>
+        </tree>
+    </field>
+</record>
+
+<!-- add teacher tree view -->
+<record id="teachers_tree" model="ir.ui.view">
+    <field name="name">Teachers.tree</field>
+    <field name="model">prueba.teacher</field>
+    <field name="arch" type="xml">
+        <tree string="Teachers">
+            <field name="name"/>
+            <field name="age"/>
+        </tree>
+    </field>
+</record>
+
+<!-- add course tree view -->
+<record id="courses_tree" model="ir.ui.view">
+    <field name="name">Courses.tree</field>
+    <field name="model">prueba.course</field>
+    <field name="arch" type="xml">
+        <tree string="Courses">
+            <field name="name"/>
+            <field name="teacher_id"/>
+            <field name="student_id" widget="many2many_tags"/>
+        </tree>
+    </field>
+</record>
+
+<!-- add asignature tree view -->
+<record id="asignatures_tree" model="ir.ui.view">
+    <field name="name">Asignatures.tree</field>
+    <field name="model">prueba.asignature</field>
+    <field name="arch" type="xml">
+        <tree string="Asignatures">
+            <field name="name"/>
+            <field name="exam"/>
+            <field name="course_id"/>
+            <field name="teacher_id"/>
+            <field name="student_id" widget="many2many_tags"/>
+        </tree>
+    </field>
+</record>
+
+<!-- add studens search view-->
+
+<record id="students_search" model="ir.ui.view">
+    <field name="name">Students.search</field>
+    <field name="model">prueba.student</field>
+    <field name="arch" type="xml">
+        <search string="Students">
+            <field name="name"/>
+            <field name="age"/>
+        </search>
+    </field>
+</record>
+
+<!-- add prueba root menu menuitem-->
+<menuitem id="prueba_menu" name="Prueba" sequence="10"/>
+<!-- add studens menu -->  
+<menuitem
+    id="students_menu"
+    name="Students"
+    parent="prueba_menu"
+    action="students_action"/>
+    
+<!-- add teacher menu -->
+<menuitem
+    id="teachers_menu"
+    name="Teachers"
+    parent="prueba_menu"
+    action="teachers_action"/>
+
+<!-- add course menu -->
+<menuitem
+    id="courses_menu"
+    name="Courses"
+    parent="prueba_menu"
+    action="courses_action"/>
+  
+<!-- add asignature menu -->
+<menuitem
+    id="asignatures_menu"
+    name="Asignatures"
+    parent="prueba_menu"
+    action="asignatures_action"/>
+</odoo>
