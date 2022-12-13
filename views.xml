@@ -68,6 +68,8 @@
             <group>
                 <field name="name"/>
                 <field name="age"/>
+                <field name="año_de_entrada"/>
+                <field name="años_de_experiencia"/>
             </group>
         </form>
     </field>
@@ -125,6 +127,8 @@
         <tree string="Teachers">
             <field name="name"/>
             <field name="age"/>
+            <field name="año_de_entrada"/>
+            <field name="años_de_experiencia"/>
         </tree>
     </field>
 </record>

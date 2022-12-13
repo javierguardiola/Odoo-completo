@@ -23,6 +23,14 @@ class Student(models.Model):
 
     name = fields.Char(string='Name', required=True)
     age = fields.Integer(string='Age', required=True)
+    
+    # @validate age > 18
+    @api.constrains('age')
+    def _check_age(self):
+        for record in self:
+            if record.age < 18:
+                raise models.ValidationError("Age must be greater than 18")
+        
 
 # add a teacher models
 class Teacher(models.Model):
@@ -31,6 +39,14 @@ class Teacher(models.Model):
 
     name = fields.Char(string='Name', required=True)
     age = fields.Integer(string='Age', required=True)
+    año_de_entrada = fields.Integer(string='Años de entrada', required=True)
+    años_de_experiencia = fields.Integer(string='Años de experiencia', required=True)
+
+    # on change age, año_de_entrada calcular calcular años_de_experiencia
+    @api.onchange('age', 'año_de_entrada')
+    def _onchange_age(self):
+        for record in self:
+            record.años_de_experiencia = record.age - record.año_de_entrada
 
 # add a course models
 class Course(models.Model):
@@ -51,5 +67,6 @@ class Asignature(models.Model):
     course_id = fields.Many2one('prueba.course', string='Course')
     teacher_id = fields.Many2one('prueba.teacher', string='Teacher')
     student_id = fields.Many2many('prueba.student', string='Students')
+
 
 
